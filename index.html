@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Angular + Google Maps</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css">
+	<script src='https://maps.googleapis.com/maps/api/js?sensor=false'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular.min.js'></script>
+	<script src="http://cdn.rawgit.com/nmccready/angular-simple-logger/0.1.7/dist/angular-simple-logger.js"></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.3.3/angular-google-maps.min.js'></script>
+
+	<script src="codigo.js"></script>
+
+	<style type="text/css">	
+	.angular-google-map-container { 
+		height: 400px; /* Sin esto, el mapa no se ve */
+	}
+	</style>
+</head>
+<body ng-app="app" ng-controller="ctrl">
+
+
+	<div class="container">
+
+
+
+		<!-- Insertar el mapa -->
+		<ui-gmap-google-map 
+			class="angular-google-map-container"
+			center="map.center" 
+			options="options" 
+			zoom="map.zoom"
+			events="map.events">
+
+			<!-- Marcador -->
+			<ui-gmap-marker 
+				coords="map.marker.coords" 
+				idkey="map.marker.id">
+			</ui-gmap-marker>
+
+		</ui-gmap-google-map>
+
+
+		<!-- Formulario para cambiar la posicion manualmente -->
+
+
+		<form>
+		  <fieldset class="form-group">
+		    <label for="latitude">Latitud (norte sur)</label>
+		    <input type="text" ng-model="map.marker.coords.latitude" class="form-control" id="latitude" />
+		  </fieldset>
+		  <fieldset class="form-group">
+		    <label for="longitud">Longitud (este oeste)</label>
+		    <input type="text" ng-model="map.marker.coords.longitude"  class="form-control" id="longitud"/>
+		  </fieldset>
+		</form>
+
+
+	</div>
+
+</body>
+</html>
